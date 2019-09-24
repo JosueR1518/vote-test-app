@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html  xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments :: header"></head>
+    <body >
+        
+        <div class="container" >
+           
+           
+           <br/>
+           <br/>
+           <br/>
+            <h1 align="center"> Wellcome to Vote App</h1>
+
+
+
+
+			<table class="table">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Name</th>
+					      <th scope="col">Department</th>
+					      <th scope="col">Candidates</th>
+					      <th scope="col">Vote</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					    <tr th:each="committee : ${countries}" >
+					      <th scope="row">1</th>
+					      <td th:text="${committee.name}"></td>
+					      <td th:text="${committee.deparmentId.name}"></td>
+					      <td th:text="${committee.candidateList.size()}"></td>
+					    </tr>
+					  </tbody>
+			</table>
+
+        </div>   
+      
+
+    </body>
+</html>

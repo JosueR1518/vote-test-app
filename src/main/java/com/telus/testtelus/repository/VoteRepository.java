@@ -1,0 +1,22 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.telus.testtelus.repository;
+
+import com.telus.testtelus.entity.Vote;
+
+import java.io.Serializable;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+/**
+ *
+ * @author jaml
+ */
+@Repository
+public interface VoteRepository extends JpaRepository<Vote, Serializable>{
+    
+}

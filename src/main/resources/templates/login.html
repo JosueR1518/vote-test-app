@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:replace="fragments :: header">
+
+    </head>
+    <body> 
+
+        <!-- Custom styles for this template -->
+        <link href="#" th:href="@{/css/login.css}" rel="stylesheet" />
+        <div class="container">
+            <div class="welcome text-center">
+                <img th:src="@{/imgs/logo-app.png}" alt="" class="img img-responsive" style="width: 120px" /> 
+               <br/>
+                <span align="center" style="color: #FFF;font-size: 3em;"><b>Vote App</b></span>
+            </div>
+            <div class="card card-container" >
+
+                <form class="form-signin"  th:action="@{/logincheck}"  method="POST" style="margin-top: 10%;">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+					
+                    <p class="input_title"><i class="fas fa-user"></i> Username</p>
+                    <input type="text" class="form-control login_box" placeholder=" exmaple.test@gmail.com" name="username" id="username"/>
+                    <p class="input_title"> <i class="fas fa-lock"></i> Password</p>
+                    <input type="password" class="form-control login_box" placeholder=" ********* " name="password" id="password"/>
+                    <div th:if="${error!=null}" class="alert alert-danger" role="alert">User or password are incorrect!</div>
+                    <div th:if="${logout!=null}" hidden="true" class="alert alert-info " ><input type="hidden" value="1"/></div>
+                    
+                    
+                    <button class="btn btn-outline-primary  " type="submit" style="float: right;">
+                       Sing in
+                    </button>
+                    
+                    <a class="" href="/signup" style="float: left; cursor:pointer; color:#007bff" >
+                        Create account
+                    </a>
+                </form>
+            </div><!-- /card-container -->
+        </div> <!-- /container -->
+<!--         <div th:replace="navMenu :: javascript"></div>    -->
+  
+    </body>
+</html>
