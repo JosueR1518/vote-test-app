@@ -1,10 +1,60 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
 
-</body>
+<html  xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="fragments :: header"></head>
+    <body >
+        
+        <div class="container" >
+           
+           
+            <h1 align="center" style="margin-top: 50px"> Wellcome to Vote App</h1>
+
+			<a class="btn btn-outline-secondary" th:href="@{/home}" title="Logout"  style="float: right;"><i class="fas fa-chevron-left" aria-hidden="true"></i> Back</a>
+
+
+
+          <div style="margin-top: 100px">
+          
+          
+                 <h3>Candidates for committee "<span th:text="${committee.name}" style="color: #007bff"></span>"</h3>
+			<table class="table table-bordered" style="margin-top: 50px">
+					  <thead>
+					    <tr>
+					      <th scope="col">#</th>
+					      <th scope="col">Name</th>
+					      <th scope="col">Surnames</th>
+					      <th scope="col">Votes</th>
+					      <th scope="col">Vote</th>
+					    </tr>
+					  </thead>
+					  <tbody>
+					  
+					      <tr th:each="candidate, index : ${candidates}" >
+					      <th scope="row"  th:text="${index.count}"></th>
+					      <td th:text="${candidate.name}"></td>
+					      <td th:text="${candidate.surname}"></td>
+					      <td th:text="${candidate.voteList.size()}"></td>
+					       <td >
+
+					       <a class="btn "  th:classappend="${candidate.id == candidateVoted} ? btn-success : btn-outline-dark" th:disabled="${candidate.id == candidateVoted}"
+					       		   th:href="@{/committee/vote/__${candidate.id}__}" 
+							       title="Vote for a candidate"  
+							       style="float: right;">
+							       <i class="fa fa-vote-yea" aria-hidden="true"></i>
+							         
+							        <span  th:if="${candidate.id == candidateVoted}">Voted</span>
+							        <span  th:if="${candidate.id != candidateVoted}">Vote</span>
+					        </a>
+					       
+					       </td>
+					    </tr>
+					   
+					  </tbody>
+			</table>
+          </div>
+
+        </div>   
+      
+
+    </body>
 </html>

@@ -20,4 +20,8 @@ public interface CommitteeRepository extends JpaRepository<Committee, Serializab
 			+ "INNER JOIN country co ON a.country_id = co.id "
 			+ "WHERE co.id=:idCountry ", nativeQuery = true)
 	public abstract List<Committee> findByCountry(@Param("idCountry") Integer idCountry);
+	
+	
+	
+	public abstract Committee findOneById(Integer id);
 }

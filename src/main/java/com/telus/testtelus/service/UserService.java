@@ -27,6 +27,9 @@ public interface UserService {
      
      
      public abstract VisitorCounter findByDate(String date);
-     public abstract List<VisitorCounter> findAllVisitorCounter(String date);
+     public abstract List<VisitorCounter> findAllVisitorCounter();
      public abstract VisitorCounter updateVisitorCounter(VisitorCounter visitor);
+     
+     
+     public abstract  List<VisitorCounter>  getVisitorsReport();
 }

@@ -38,4 +38,14 @@ public class CommitteeServiceImpl {
 	}
 	
 	
+	
+	public Committee findOneById(Integer idCommittee) {
+		
+		
+		return committeeRepository.findOneById(idCommittee);
+	}
+	
+	
+	
+	
 }

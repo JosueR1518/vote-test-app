@@ -177,8 +177,8 @@ public class Voter implements Serializable {
 
     @Override
 	public String toString() {
-		return "Voter [id=" + id + ", idDocument=" + idDocument + ", name=" + name + ", surname=" + surname + ", email="
-				+ email + ", countryId=" + countryId + ", userId=" + userId +  "]";
+		return "Voter [id=" + id + ", idDocument=" + idDocument + ", name=" + name + ", surname=" + surname +
+				 "]";
 	}
     
     

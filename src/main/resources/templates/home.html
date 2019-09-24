@@ -7,15 +7,17 @@
         <div class="container" >
            
            
-           <br/>
-           <br/>
-           <br/>
-            <h1 align="center"> Wellcome to Vote App</h1>
+            <h1 align="center" style="margin-top: 50px"> Wellcome to Vote App</h1>
+
+			<a class="btn btn-outline-secondary" th:href="@{/logout}" title="Logout"  style="float: right;"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a>
 
 
 
-
-			<table class="table">
+          <div style="margin-top: 100px">
+          
+          
+                 <h3>List of committees in <span th:text="${country}" style="color: #007bff"></span></h3>
+			<table class="table table-bordered" style="margin-top: 50px">
 					  <thead>
 					    <tr>
 					      <th scope="col">#</th>
@@ -26,14 +28,26 @@
 					    </tr>
 					  </thead>
 					  <tbody>
-					    <tr th:each="committee : ${countries}" >
-					      <th scope="row">1</th>
+					    <tr th:each="committee, index : ${committees}" >
+					      <th scope="row"  th:text="${index.count}"></th>
 					      <td th:text="${committee.name}"></td>
-					      <td th:text="${committee.deparmentId.name}"></td>
+					      <td th:text="${committee.departmentId.name}"></td>
 					      <td th:text="${committee.candidateList.size()}"></td>
+					       <td >
+
+					       <a class="btn btn-outline-success" 
+					       		   th:href="@{/committee/__${committee.id}__/candidates}" 
+							       title="Vote for a candidate"  
+							       style="float: right;">
+							       <i class="fa fa-vote-yea" aria-hidden="true"></i>
+							        Vote 
+					        </a>
+					       
+					       </td>
 					    </tr>
 					  </tbody>
 			</table>
+          </div>
 
         </div>   
       

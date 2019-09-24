@@ -83,6 +83,7 @@ public class UserController {
 	    	  Voter voter = voterService.findByUser(user.getId());
 	    	  System.out.println("Datos votante"+voter.toString());
     	      model.addAttribute("committees", committeeService.findByCountry(voter.getCountryId().getId()));
+    	      model.addAttribute("country", voter.getCountryId().getName());
 	      
 	        return "home";
 	    }

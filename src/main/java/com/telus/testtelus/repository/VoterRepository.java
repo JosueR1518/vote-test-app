@@ -15,5 +15,5 @@ public interface VoterRepository  extends JpaRepository<Voter, Serializable>{
 	
 	
 	@Query(value = "SELECT v.* FROM voter v WHERE v.user_id =:idUser",nativeQuery = true) 
-	public abstract Voter findByUserId(@Param(value = "idUser") Integer idUser);
+	public  Voter findByUserId(@Param(value = "idUser") Integer idUser);
 }

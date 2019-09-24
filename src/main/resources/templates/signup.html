@@ -74,7 +74,7 @@
 			                     <div class="col-md-6">
 			             <div class="form-group">
                              		<p class="input_title"><i class="fas fa-flag"></i> Country</p>
-                                    <select  th:field="*{idCountry}" class="form-control"required="">
+                                    <select  th:field="*{idCountry}" class="form-control" required="">
                                         <option th:each="country : ${countries}" th:value="${country.id}" th:text="${country.name}"></option>              
                                     </select>
                                 </div> 	  

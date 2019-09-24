@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<VisitorCounter> findAllVisitorCounter(String date) {
+	public List<VisitorCounter> findAllVisitorCounter() {
 		
 		return visitorRepository.findAll();
 	}
@@ -107,6 +107,12 @@ public class UserServiceImpl implements UserService{
 	
 		
 		return visitorRepository.save(visitor);
+	}
+
+	@Override
+	public List<VisitorCounter> getVisitorsReport() {
+	
+		return visitorRepository.findAllOrderByDateDesc();
 	}
     
     
