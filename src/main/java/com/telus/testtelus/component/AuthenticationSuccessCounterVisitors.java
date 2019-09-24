@@ -53,7 +53,7 @@ public class AuthenticationSuccessCounterVisitors  implements  ApplicationListen
 				
 				
 				
-				userService.updateVisitorCounter(visitCounter);
+				visitCounter = userService.updateVisitorCounter(visitCounter);
 				
 				
 				
