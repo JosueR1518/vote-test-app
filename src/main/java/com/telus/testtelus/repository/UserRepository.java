@@ -23,10 +23,11 @@ public interface UserRepository extends JpaRepository<User, Serializable>{
  
     
     
-     public abstract User findByUsername(String username);
+	 @Query(value = "SELECT u.* FROM user u WHERE u.username = :username",nativeQuery = true) 
+     public abstract User findByUsername(@Param(value = "username") String username);
      
-     public abstract User findOneByUsername(String username);
-     
+     @Query(value = "SELECT u.* FROM user u WHERE u.username = :username",nativeQuery = true) 
+     public abstract User findOneByUsername(@Param(value = "username") String username);
 
     @Query(value = "SELECT u.* FROM users u WHERE u.username LIKE :username",nativeQuery = true) 
     public abstract List<User> findLikeUsername(@Param(value = "username") String username);
