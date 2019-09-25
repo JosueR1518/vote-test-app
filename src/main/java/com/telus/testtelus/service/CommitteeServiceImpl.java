@@ -75,25 +75,26 @@ public class CommitteeServiceImpl {
 			 * get the most voted candidate by committee
 			 */
 			
-			Query query = em.createNativeQuery("SELECT co.id as idCommittee, c.id as idCandidate, count(v.id) as votes "
+			Query query = em.createNativeQuery("SELECT c.name as idCandidate, c.surname as surname, count(v.id) as votes "
 					+ "FROM candidate c "
 					+ "INNER JOIN vote v ON c.id = v.candidate_id "
 					+ "INNER JOIN committee co ON c.committee_id = co.id "
-					+ "WHERE co.id =:id_committee GROUP BY  co.id, c.id ORDER BY");
+					+ "WHERE co.id =:id_committee GROUP BY  c.id  Order BY votes desc limit 1 ");
 			
 			  query.setParameter("id_committee", committee.getId());
 			
-			List<Object[]>  data = query.getResultList();
-			
-			for (Object[] row : data) {
-				
-				System.out.println("Data:" +row[0].toString()+" - "+row[1].toString()+" - "+row[2].toString());
-				
+			 List<Object[]> data = query.getResultList();
+			 
+			 for (Object c[] : data) {
+				 mostVotedCandidate = c[0]+" "+c[1]+ " | #"+c[2];
+				 break;
 			}
 			
 			
 			
-			cm.setMostVotedCandidate(mostVotedCandidate);
+			
+			cm.setMostVotedCandidate(mostVotedCandidate );
+			
 			committeesStatistics.add(cm);
 		}
 		

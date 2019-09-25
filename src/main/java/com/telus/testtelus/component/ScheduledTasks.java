@@ -24,9 +24,8 @@ public class ScheduledTasks {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
     private static final String subjectMail = "Resume of committees statictics (10 AM CST)";
     
-    private static final String subjectMessage = "Committees statictics (10 AM CST)";
-	private static final String[] recipients = {
-			"shopicars.sv@gmail.com"/* ,"ties_dataintegration@telusinternational.com​" */};
+    private static final String subjectMessage = "Test - Committees statictics (10 AM CST)";
+	private static final String[] recipients = {"josuealexander15@hotmail.com","ties_dataintegration@telusinternational.com" };
     
     
     @Autowired
@@ -42,30 +41,21 @@ public class ScheduledTasks {
 	 * 
 	 */
     
-    @Scheduled(cron = "0 * 10 24 * ?", zone = "CST")
+    @Scheduled(cron = "0 0 10 * * ?", zone = "GMT-6")
     public void reportCommitteesStatistics() {
     	
     	log.info("The time is now in CST {}", dateFormat.format(new Date()));
     
-    	
-    	 
-
             SimpleMailMessage msg = new SimpleMailMessage();
             msg.setTo(recipients);
 
-            msg.setSubject(subjectMessage);
-         
-
+            msg.setSubject(subjectMessage);      
             List<CommitteeModel> committeesstatictics =  committeeService.getCommitteesStatistics();
-            
             
             String jsonData = new Gson().toJson(committeesstatictics);
             msg.setText(subjectMail+"\n\n I have attached the statistics of committees in JSON format, \n\n"+jsonData);
             
             javaMailSender.send(msg);
-    	
-    	
-    
     
     }
     
