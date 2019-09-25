@@ -6,9 +6,12 @@
         
         <div class="container" >
            
+              <div class="welcome text-center">
+                <img th:src="@{/imgs/logo-app.png}" alt="" class="img img-responsive" style="width: 120px" /> 
+               <br/>
+                <span align="center" style="font-size: 3em;"><b>Wellcome to Vote App</b></span>
+            </div>
            
-            <h1 align="center" style="margin-top: 50px"> Wellcome to Vote App</h1>
-
 			<a class="btn btn-outline-secondary" th:href="@{/home}" title="Logout"  style="float: right;"><i class="fas fa-chevron-left" aria-hidden="true"></i> Back</a>
 
 
@@ -17,8 +20,8 @@
           
           
                  <h3>Candidates for committee "<span th:text="${committee.name}" style="color: #007bff"></span>"</h3>
-			<table class="table table-bordered" style="margin-top: 50px">
-					  <thead>
+			<table class="table hover" style="margin-top: 50px">
+					  <thead class="thead-dark">
 					    <tr>
 					      <th scope="col">#</th>
 					      <th scope="col">Name</th>
@@ -36,7 +39,7 @@
 					      <td th:text="${candidate.voteList.size()}"></td>
 					       <td >
 
-					       <a class="btn "  th:classappend="${candidate.id == candidateVoted} ? btn-success : btn-outline-dark" th:disabled="${candidate.id == candidateVoted}"
+					       <a class="btn "  th:classappend="${candidate.id == candidateVoted} ? btn-primary : btn-outline-primary" th:disabled="${candidate.id == candidateVoted}"
 					       		   th:href="@{/committee/vote/__${candidate.id}__}" 
 							       title="Vote for a candidate"  
 							       style="float: right;">

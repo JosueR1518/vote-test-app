@@ -1,107 +1,152 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:replace="fragments :: header">
+<head th:replace="fragments :: header">
 
-    </head>
-    <body> 
+</head>
+<body>
 
-        <!-- Custom styles for this template -->
-        <link href="#" th:href="@{/css/login.css}" rel="stylesheet" />
-        
-        
-        <div class="container">
-            <div class="welcome text-center" style=" max-width: 30em;">
-                <img th:src="@{/imgs/logo-app.png}" alt="" class="img img-responsive" style="width: 120px" /> 
-               <br/>
-                <span align="center" style="color: #FFF;font-size: 3em;"><b>Sign Up!</b></span>
-            </div>
-            <div class="card card-container" style=" max-width: 30em;" >
+	<!-- Custom styles for this template -->
+	<link href="#" th:href="@{/css/login.css}" rel="stylesheet" />
 
-                <form class="form-signin no-submit"  th:action="${(#mvc.url('UC#singInSave')).build()}"  th:object="${user}" th:method="post"  method="POST" style="margin-top: 10%;">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-					
-                    <p class="input_title"><i class="fas fa-user"></i> Username</p>
-                    <input type="text" class="form-control login_box" placeholder=" exmaple.test" th:field="*{username}" required=""/>
-                                                <p th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="alert-danger">Username posee errores</p>
-                    
-                    <div class="row">
-                    		  <div class="col-md-6">
-                    		  <p class="input_title"> <i class="fas fa-lock"></i> Password</p>
-                    <input type="password" class="form-control login_box" placeholder=" ********* " th:field="*{password}" required="" />
-                    <div th:if="${error!=null}" class="alert alert-danger" role="alert">User or password are incorrect!</div>
-                    
-			                    </div>
-			                     <div class="col-md-6">
-			                    		  <p class="input_title"><i class="fas fa-check-double"></i> Confirm password</p>
-                    <input type="password" class="form-control login_box" placeholder=" Confirm your password" name="confirmpass" id="confirmpass"/>
-                    
-			                    </div>
-                    </div>
-                    
-                    
-                     <div class="row">
-                    		  <div class="col-md-6">
-                    		  <p class="input_title"> <i class="fas fa-user-check"></i> Name</p>
-                     <input type="text" class="form-control login_box" placeholder=" Type your name" th:field="*{name}" required="" />
-                   
-                    
-			                    </div>
-			                     <div class="col-md-6">
-			                    		  <p class="input_title"><i class="fas fa-user-check"></i> Surnames</p>
-                   <input type="text" class="form-control login_box" placeholder="Type your surnames" th:field="*{surname}" required="" />
-                    
-			                    </div>
-			          
-			                    
-			      
-                    </div>
-                    
-                    
-                       	                 <p class="input_title"><i class="fas fa-id-envelope"></i> Email</p>
-                    <input type="text" class="form-control login_box" placeholder=" type you email" th:field="*{email}" required="" />
-                    
-                    
-                    
-                     <div class="row">
-                    		  <div class="col-md-6">
-                    		    	                 <p class="input_title"><i class="fas fa-id-card"></i> ID document</p>
-                    <input type="text" class="form-control login_box" placeholder=" type an ID Document" th:field="*{idDocument}" required=""/>
-                    
-                  
-                    
-			                    </div>
-			                     <div class="col-md-6">
-			             <div class="form-group">
-                             		<p class="input_title"><i class="fas fa-flag"></i> Country</p>
-                                    <select  th:field="*{idCountry}" class="form-control" required="">
-                                        <option th:each="country : ${countries}" th:value="${country.id}" th:text="${country.name}"></option>              
-                                    </select>
-                                </div> 	  
-			                    </div>
-			          
-			                    
-			      
-                    </div>
-                       
-                  
-                           	               
-                           	                 
-                                        
-                 
-                    
-                    <br/>
-                    
-                    <button class="btn btn-outline-primary  " type="submit" style="float: right;">
-                      Create account
-                    </button>
-                    
-                    <a class="" th:href="@{/login}" style="float: left; cursor:pointer; color:#007bff" >
-                        Sing in instead
-                    </a>
-                </form>
-            </div><!-- /card-container -->
-        </div> <!-- /container -->
 
-    </body>
+	<div class="container">
+		<div class="welcome text-center" style="max-width: 30em;">
+			<img th:src="@{/imgs/logo-app.png}" alt="" class="img img-responsive"
+				style="width: 120px" /> <br /> <span align="center"
+				style="color: #FFF; font-size: 3em;"><b>Sign Up!</b></span>
+		</div>
+		<div class="card card-container" style="max-width: 30em;">
+
+
+			<div th:if="${status == 'ERROR'}"
+				class="alert alert-danger alert-dismissible fade show"
+				style="margin-top: 10px;" role="alert">
+				<span th:text="${message}"></span>
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<form class="form-signin no-submit"
+				th:action="${(#mvc.url('UC#singInSave')).build()}"
+				th:object="${user}" th:method="post" method="POST"
+				style="margin-top: 10%;">
+				<input type="hidden" name="${_csrf.parameterName}"
+					value="${_csrf.token}" />
+
+				<p class="input_title">
+					<i class="fas fa-user"></i> Username
+				</p>
+				<input type="text" class="form-control login_box"
+					placeholder=" example.test" th:field="*{username}" required="" />
+				<p th:if="${#fields.hasErrors('username')}" th:errors="*{username}"
+					class="alert-danger">Username posee errores</p>
+
+				<div class="row">
+					<div class="col-md-6">
+						<p class="input_title">
+							<i class="fas fa-lock"></i> Password
+						</p>
+						<input type="password" class="form-control login_box"
+							placeholder=" ********* " th:field="*{password}" required="" />
+						<div th:if="${error!=null}" class="alert alert-danger"
+							role="alert">User or password are incorrect!</div>
+
+					</div>
+					<div class="col-md-6">
+						<p class="input_title">
+							<i class="fas fa-check-double"></i> Confirm password
+						</p>
+						<input type="password" class="form-control login_box"
+							placeholder=" Confirm your password"
+							th:field="*{confirmPassword}" required=""  />
+
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-6">
+						<p class="input_title">
+							<i class="fas fa-user-check"></i> Name
+						</p>
+						<input type="text" class="form-control login_box"
+							placeholder=" Type your name" th:field="*{name}" required="" />
+
+
+					</div>
+					<div class="col-md-6">
+						<p class="input_title">
+							<i class="fas fa-user-check"></i> Surnames
+						</p>
+						<input type="text" class="form-control login_box"
+							placeholder="Type your surnames" th:field="*{surname}"
+							required="" />
+
+					</div>
+
+
+
+				</div>
+
+
+				<p class="input_title">
+					<i class="fas fa-id-envelope"></i> Email
+				</p>
+				<input type="text" class="form-control login_box"
+					placeholder=" example.test@gmail.com" th:field="*{email}" required="" />
+
+
+
+				<div class="row">
+					<div class="col-md-6">
+						<p class="input_title">
+							<i class="fas fa-id-card"></i> ID document
+						</p>
+						<input type="text" class="form-control login_box"
+							placeholder=" type an ID Document" th:field="*{idDocument}"
+							required="" />
+
+
+
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<p class="input_title">
+								<i class="fas fa-flag"></i> Country
+							</p>
+							<select th:field="*{idCountry}" class="form-control" required="">
+								<option th:each="country : ${countries}"
+									th:value="${country.id}" th:text="${country.name}"></option>
+							</select>
+						</div>
+					</div>
+
+
+
+				</div>
+
+
+
+
+
+
+
+				<br />
+
+				<button class="btn btn-outline-primary  " type="submit"
+					style="float: right;">Create account</button>
+
+				<a class="" th:href="@{/login}"
+					style="float: left; cursor: pointer; color: #007bff"> Sing in
+					instead </a>
+			</form>
+		</div>
+		<!-- /card-container -->
+	</div>
+	<!-- /container -->
+	
+
+</body>
 </html>

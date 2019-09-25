@@ -7,8 +7,13 @@
         <div class="container" >
            
            
-            <h1 align="center" style="margin-top: 50px"> Wellcome to Vote App</h1>
-
+           <div class="welcome text-center">
+                <img th:src="@{/imgs/logo-app.png}" alt="" class="img img-responsive" style="width: 120px" /> 
+               <br/>
+                <span align="center" style="font-size: 3em;"><b>Wellcome to Vote App</b></span>
+            </div>
+           
+          
 			<a class="btn btn-outline-secondary" th:href="@{/logout}" title="Logout"  style="float: right;"><i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout</a>
 
 
@@ -17,8 +22,8 @@
           
           
                  <h3>List of committees in <span th:text="${country}" style="color: #007bff"></span></h3>
-			<table class="table table-bordered" style="margin-top: 50px">
-					  <thead>
+			<table class="table table-hover  " style="margin-top: 50px">
+					  <thead class="thead-dark">
 					    <tr>
 					      <th scope="col">#</th>
 					      <th scope="col">Name</th>
@@ -35,7 +40,7 @@
 					      <td th:text="${committee.candidateList.size()}"></td>
 					       <td >
 
-					       <a class="btn btn-outline-success" 
+					       <a class="btn btn-outline-primary" 
 					       		   th:href="@{/committee/__${committee.id}__/candidates}" 
 							       title="Vote for a candidate"  
 							       style="float: right;">

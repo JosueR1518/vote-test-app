@@ -75,10 +75,6 @@ public class UserController {
 	    	  
 	    	User user = securityService.findUser(principal.getName());
 	    	
-	    	if(user == null) {
-	    		 return "redirect:/login";
-	    		
-	    	}
 	    	
 	    	  Voter voter = voterService.findByUser(user.getId());
 	    	  System.out.println("Datos votante"+voter.toString());
@@ -102,12 +98,32 @@ public class UserController {
 	    
 	    
 	    @PostMapping(value = "/signup")
-	    public String singInSave(@Valid @ModelAttribute(name = "user") UserModel userNew, BindingResult bindingResult) {
+	    public String singInSave(Model model, @Valid @ModelAttribute(name = "user") UserModel userNew, BindingResult bindingResult) {
 
 	    	
-	    	System.out.println(userNew.toString());
-
+	    	
+	    	User userExists = userService.findByUsername(userNew.getUsername());
+	    	
+	    	if(userExists != null) {
+	    		
+	    		 model.addAttribute("message","Username is already taken!");
+	    		 model.addAttribute("status","ERROR");
+	    		  model.addAttribute("countries",countryServiceImpl.findAll());
+	    		return "signup";
+	    		
+	    	}else {
+	    		
+	    		
+	    		if(!userNew.getPassword().equals(userNew.getConfirmPassword())) {
+	    			 model.addAttribute("message","Passwords doesn't match!");
+		    		 model.addAttribute("status","ERROR");
+		    		  model.addAttribute("countries",countryServiceImpl.findAll());
+		    		return "signup";
+	    		}
+	    	}
+	    
 	    	 if (bindingResult.hasErrors()) {
+	
 	             return "signup";
 	    	 }
 

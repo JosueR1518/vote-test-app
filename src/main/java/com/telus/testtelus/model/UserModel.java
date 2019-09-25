@@ -5,6 +5,8 @@ public class UserModel {
 	private Integer id;
 	private String username;
 	private String password;
+	
+	private String confirmPassword;
 	private String email;
 	private String name;
 	private String surname;
@@ -14,6 +16,12 @@ public class UserModel {
 	
 	
 	
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
+	}
 	public Integer getIdCountry() {
 		return idCountry;
 	}

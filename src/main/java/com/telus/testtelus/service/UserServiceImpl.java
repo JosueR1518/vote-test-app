@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User findByUsername(String username) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return userRepository.findOneByUsername(username);
     }
 
 	@Override
