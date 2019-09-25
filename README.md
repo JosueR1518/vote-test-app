@@ -17,19 +17,20 @@ them to vote for candidates that belong to a specific committee.*
 **How to run on eclipse?**
 ## 1. Prepare the project
  - [ ] Clone or download ZIP
- - [ ] Import project into Eclipse
+ - [ ] Import project into Eclipse:
+ 
  	Rigth click in File -> Import -> Maven -> Existing Maven Projects -> selec project (unzip)	
  
 ## 2. Config database conexion and Run project
  - [ ] Go to path: src/main/resources and configure file **"application.properties"**
  - [ ] You have to set  "user and password" 
- - [ ]  Change parameters base of your own details (replace "[values]") 
+ - [ ] Change parameters base of your own details (replace "[values]") 
 		      **spring.datasource.url = [URI database ]
 				spring.datasource.username = [username]
 				spring.datasource.password = [password]**
 				
 				
-- [ ] Install dependencies with Maven (From terminal: mvn install)
+- [ ] Install dependencies with Maven (From terminal: mvn install) :
 		 
 	 1. Rigth click over project -> Maven -> Update Project...
 	
