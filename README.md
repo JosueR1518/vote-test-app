@@ -66,3 +66,12 @@ The implementation is located in path:  src/main/java/com/telus/testtelus/compon
 
 You can get it touch with me.  [https://www.jossuemejia.com](https://www.jossuemejia.com)
 
+
+# 4.  Some screenshots
+
+![Login](https://picasaweb.google.com/112572088688238602899/6740525782926113985#6740525781005607090 "login")
+![SignUp](https://picasaweb.google.com/112572088688238602899/6740525970083564945#6740525974112779746 "SignUp")
+![List of committees](https://picasaweb.google.com/112572088688238602899/6740526124876801169#6740526129755969458 "List of committees")
+
+![Vote for a candidate](https://picasaweb.google.com/112572088688238602899/6740526274130441665#6740526271768671842 "Vote for a candidate")
+## Rename a file
