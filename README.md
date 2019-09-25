@@ -17,21 +17,27 @@ them to vote for candidates that belong to a specific committee.*
 **How to run on eclipse?**
 ## 1. Prepare the project
  - [ ] Clone or download ZIP
- - [ ] Import project into Eclipse
- - [ ] Install dependencies with Maven (From terminal: mvn install)
-		 
-	 1. Rigth click over project -> Maven -> Update Project...
-	 2. Run the project: rigth click over project -> Run As -> Spring Boot App
-
- - [ ]  Run the script of the database from file database_vote_test.sql,   It's in main folder, the name database: vote_test
-## 2. Config database conexion
+ - [ ] Import project into Eclipse:
+ 
+ 	Rigth click in File -> Import -> Maven -> Existing Maven Projects -> selec project (unzip)	
+ 
+## 2. Config database conexion and Run project
  - [ ] Go to path: src/main/resources and configure file **"application.properties"**
  - [ ] You have to set  "user and password" 
- - [ ]  Change parameters base of your own details (replace "[values]") 
+ - [ ] Change parameters base of your own details (replace "[values]") 
 		      **spring.datasource.url = [URI database ]
 				spring.datasource.username = [username]
 				spring.datasource.password = [password]**
+				
+				
+- [ ] Install dependencies with Maven (From terminal: mvn install) :
+		 
+	 1. Rigth click over project -> Maven -> Update Project...
+	
 
+ - [ ]  Run the script of the database from file database_vote_test.sql,   It's in main folder, the name database: vote_test	
+ - [ ]	Run the project: rigth click over project -> Run As -> Spring Boot App		
+	
   
 # 3.  Test App
 
