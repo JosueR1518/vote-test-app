@@ -64,7 +64,7 @@ The implementation is located in path:  src/main/java/com/telus/testtelus/compon
 
 ## Any doub?
 
-You can get it touch with me.  [https://www.jossuemejia.com](https://www.jossuemejia.com)
+You can get in touch with me.  [https://www.jossuemejia.com](https://www.jossuemejia.com)
 
 
 # 4.  Some screenshots
