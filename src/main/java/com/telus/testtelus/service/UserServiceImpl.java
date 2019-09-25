@@ -10,11 +10,13 @@ import com.telus.testtelus.entity.User;
 import com.telus.testtelus.entity.VisitorCounter;
 import com.telus.testtelus.entity.Voter;
 import com.telus.testtelus.model.UserModel;
+import com.telus.testtelus.model.VisitorModel;
 import com.telus.testtelus.repository.CountryRepository;
 import com.telus.testtelus.repository.UserRepository;
 import com.telus.testtelus.repository.VisitorCounterRepository;
 import com.telus.testtelus.repository.VoterRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -110,9 +112,16 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public List<VisitorCounter> getVisitorsReport() {
-	
-		return visitorRepository.findAllOrderByDateDesc();
+	public List<VisitorModel> getVisitorsReport() {
+		
+		List<VisitorCounter> visitorsCounter = visitorRepository.findAllOrderByDateDesc();
+		List<VisitorModel> visitorModel = new ArrayList<VisitorModel>();
+		
+		for (VisitorCounter visitorCounter : visitorsCounter) {
+			visitorModel.add(new VisitorModel(visitorCounter.getId(),visitorCounter.getDate(),visitorCounter.getQuantity()));
+		}
+		
+		return visitorModel;
 	}
     
     

@@ -29,9 +29,7 @@ public class AuthenticationSuccessCounterVisitors  implements  ApplicationListen
 	    
 		@Override
 		public void onApplicationEvent(final AuthenticationSuccessEvent event) {
-			
-			try {
-				
+		
 				DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				Date dateCurrent = new Date();
 				String currentDate = formatter.format(dateCurrent);
@@ -51,103 +49,8 @@ public class AuthenticationSuccessCounterVisitors  implements  ApplicationListen
 					visitCounter.setQuantity(1);
 				}
 				
-				
-				
 				visitCounter = userService.updateVisitorCounter(visitCounter);
 				
-				
-				
-				
-				
-				
-				String fileName = "visitsPerDay.txt";
-				
-				FileWriter fw = new FileWriter(fileName,true);
-				
-				
-				//Read file to get last line
-				BufferedReader br = new BufferedReader(new FileReader(fileName));
-				
-				String lastLine = "";
-				
-				String sCurrentLine;
-				String newLine;
-				
-				StringBuilder sb = new StringBuilder();
-				
-				while((sCurrentLine = br.readLine()) != null) {
-					
-					lastLine = sCurrentLine;
-				}
-				
-				br = new BufferedReader(new FileReader(fileName));
-				
-				while((sCurrentLine = br.readLine()) != null) {
-					
-					if(lastLine.equals(sCurrentLine)) {
-						
-						String[] dateOld = lastLine.split("\\|");
-						String oldDate = dateOld[0];
-						
-						
-						if(currentDate.equals(oldDate)) {
-							int countDay = Integer.parseInt(dateOld[1]);
-							countDay++;
-							
-							sb.append(oldDate+"|"+countDay);
-							sb.append("\n");
-						}
-						else {
-							
-							sb.append(oldDate+"|"+dateOld[1]);
-							sb.append("\n");
-							sb.append(currentDate+"|"+1);
-							sb.append("\n");
-						}
-						
-						
-					}
-					else {
-						
-						sb.append(sCurrentLine);
-						sb.append("\n");
-						
-					}
-					
-					
-					
-					
-					
-				}
-				
-				//If file has not lines
-				if(lastLine == "") {
-					
-					
-					newLine = currentDate+"|"+"1";
-					fw.write(newLine);
-					
-					
-				}else {
-					FileWriter fws = new FileWriter(fileName);
-					fws.write(sb.toString());
-					fws.close();
-				}
-				
-				fw.close();
-			
-
-				
-				
-				
-			} catch (FileNotFoundException | UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
 	}
 		
 	

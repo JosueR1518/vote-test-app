@@ -47,10 +47,10 @@ public class Committee implements Serializable {
     @Size(min = 1, max = 150)
     @Column(name = "name", nullable = false, length = 150)
     private String name;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "committeeId", fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "committeeId", fetch = FetchType.EAGER)
     private List<Candidate> candidateList;
     @JoinColumn(name = "deparment_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Department departmentId;
 
     public Committee() {

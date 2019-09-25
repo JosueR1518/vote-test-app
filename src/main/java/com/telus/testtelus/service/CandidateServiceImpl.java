@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.telus.testtelus.entity.Candidate;
 import com.telus.testtelus.entity.Committee;
+import com.telus.testtelus.model.CandidateModel;
 import com.telus.testtelus.repository.CandidateRepository;
 
 @Service
@@ -22,25 +23,26 @@ public class CandidateServiceImpl {
 	
 	
 	
-	public List<Map<String, Object>>  getRegistered(){
+	public List<CandidateModel>  getRegistered(){
 		
 		
 		List<Candidate> candidates = candidateRepository.findAll(); 
 		
-		List<Map<String, Object>> list = new ArrayList<Map<String,Object>>();
+		List<CandidateModel> list = new ArrayList<>();
 		
 		for (Candidate candidate : candidates) {
-			Map<String, Object> data = new HashMap();
+			CandidateModel data = new CandidateModel();
 			
 			
 			Committee committee = candidate.getCommitteeId();
-		    data.put( "surnames", candidate.getSurname() );
-		    data.put( "name", candidate.getName());
-		    data.put( "email", candidate.getEmail() );
-		    data.put( "id_document", candidate.getIdDocument() );
-		    data.put( "country", committee.getDepartmentId().getAreaId().getCountryId().getName() );
-		    data.put( "department", committee.getDepartmentId().getName());
-		    data.put( "committee", committee.getName());
+			
+		    data.setSurnames( candidate.getSurname() );
+		    data.setName( candidate.getName());
+		    data.setEmail( candidate.getEmail() );
+		    data.setIdDocument(candidate.getIdDocument() );
+		    data.setCountry(committee.getDepartmentId().getAreaId().getCountryId().getName() );
+		    data.setDepartment( committee.getDepartmentId().getName());
+		    data.setCommitttee( committee.getName());
 		    
 		    list.add(data);
 		}

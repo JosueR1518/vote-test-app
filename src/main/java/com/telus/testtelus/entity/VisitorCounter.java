@@ -49,7 +49,8 @@ public class VisitorCounter implements Serializable {
     @NotNull
     @Column(name = "quantity", nullable = false)
     private int quantity;
-
+    
+    
     public VisitorCounter() {
     }
 

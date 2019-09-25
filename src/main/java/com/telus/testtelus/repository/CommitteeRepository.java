@@ -23,5 +23,9 @@ public interface CommitteeRepository extends JpaRepository<Committee, Serializab
 	
 	
 	
+	@Query(value = "SELECT c.* FROM committee c  ORDER BY c.name asc ", nativeQuery = true)
+	public abstract List<Committee> findAllSortAsc();
+	
+	
 	public abstract Committee findOneById(Integer id);
 }

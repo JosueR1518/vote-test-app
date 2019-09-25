@@ -11,6 +11,7 @@ import java.util.List;
 import com.telus.testtelus.entity.User;
 import com.telus.testtelus.entity.VisitorCounter;
 import com.telus.testtelus.model.UserModel;
+import com.telus.testtelus.model.VisitorModel;
 
 /**
  *
@@ -31,5 +32,5 @@ public interface UserService {
      public abstract VisitorCounter updateVisitorCounter(VisitorCounter visitor);
      
      
-     public abstract  List<VisitorCounter>  getVisitorsReport();
+     public abstract  List<VisitorModel>  getVisitorsReport();
 }
